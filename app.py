@@ -17,27 +17,33 @@ list_todos = [
       "name":"To do clean"
    }
 ]
+global list_homework
 
 @component
 def App():
     todos,set_todos = use_state(list_todos)
     value_form, set_value_form = use_state("")
-
+    
     list_homework = [TodoItem(item,set_todos) for item in todos ]
     
-    
+
     def handleChangeInput(event):
        set_value_form(event["target"]["value"])
        
     def add_new(new):
        new_element = {
-          "id":6,
+          "id":5,
           "name":new
        }
-       new_list = todos.append(new_element)
-       set_todos(new_list)
-
        
+       new_list = todos
+       new_list.append(new_element)
+       set_todos(new_list)
+       print(todos)
+
+    def update_list():
+       list_homework= [TodoItem(item,set_todos) for item in todos ]
+    use_effect(update_list,dependencies=[todos])
 
     return html.div(
         html.h1("Count"),
