@@ -44,10 +44,9 @@ def App():
     def update_list():
        list_homework= [TodoItem(item,set_todos) for item in todos ]
     use_effect(update_list,dependencies=[todos])
-    attrs = { "style" : { "display":"flex","alignt-items":"center","justify-content":"center" } }
+    container = { "style" : { "display":"flex","alignt-items":"center","justify-content":"center" } }
     return html.div(
-       attrs
-    ,
+       container ,
         html.h1("Count"),
         html.div(
           html.input({"on_change":handleChangeInput}),
@@ -61,8 +60,8 @@ def TodoItem(item:list,set_todos):
   
   def handle_remove(event):
     print("Delete this element")
-  
-  return html.div(
+  container_todo_item = { "style" : { "font-size":"15"} }
+  return html.div(container_todo_item,
       html.p(item["name"]),
       html.button({"on_click":handle_remove},"Remove")
    )
