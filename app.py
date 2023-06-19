@@ -44,7 +44,8 @@ def App():
     def update_list():
        list_homework= [TodoItem(item,set_todos) for item in todos ]
     use_effect(update_list,dependencies=[todos])
-    container = { "style" : { "display":"flex","alignt-items":"center","justify-content":"center" } }
+
+    container = { "style" : { "display":"flex","alignt-items":"center","justify-content":"center","width":"100vw","hight":"100vh","flex-direction":"column" } }
     return html.div(
        container ,
         html.h1("Count"),
